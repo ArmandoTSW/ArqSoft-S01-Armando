@@ -1,0 +1,64 @@
+﻿@model Catalogo.Models.Item
+
+@{
+    ViewData["Title"] = "Nuevo Videojuego";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg border-0">
+                <div class="card-header bg-dark text-white py-3">
+                    <h4 class="mb-0 text-center"><i class="bi bi-plus-circle me-2"></i>Registrar Videojuego</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form asp-action="Agregar" method="post">
+                        <div class="mb-3">
+                            <label asp-for="Titulo" class="form-label fw-bold text-secondary">Título del Juego</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light"><i class="bi bi-controller"></i></span>
+                                <input asp-for="Titulo" class="form-control" placeholder="Ej. Elden Ring" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Genero" class="form-label fw-bold text-secondary">Género</label>
+                                <input asp-for="Genero" class="form-control" placeholder="Ej. RPG" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Consola" class="form-label fw-bold text-secondary">Consola / Plataforma</label>
+                                <input asp-for="Consola" class="form-control" placeholder="Ej. PS5, PC" required />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="Ano" class="form-label fw-bold text-secondary">Año de Lanzamiento</label>
+                                <input asp-for="Ano" type="number" class="form-control" placeholder="AAAA" />
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Descripcion" class="form-label fw-bold text-secondary">Breve Descripción</label>
+                            <textarea asp-for="Descripcion" class="form-control" rows="4" placeholder="Escribe de qué trata el juego..."></textarea>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg shadow-sm">
+                                <i class="bi bi-save me-2"></i>Guardar en Inventario
+                            </button>
+                            <a asp-action="Index" class="btn btn-link text-muted mt-2">
+                                <i class="bi bi-arrow-left me-1"></i>Volver al Catálogo
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 text-muted">
+                <small><i class="bi bi-info-circle me-1"></i> Los datos guardados se almacenarán temporalmente en la lista estática.</small>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model Catalogo.Models.Item
+
+@{
+    ViewData["Title"] = "Detalles de " + Model.Titulo;
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            
+            <div class="mb-4">
+                <a asp-action="Index" class="btn btn-outline-secondary btn-sm rounded-pill">
+                    <i class="bi bi-arrow-left me-1"></i> Volver al Catálogo
+                </a>
+            </div>
+
+            <div class="card shadow border-0 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-md-1 bg-primary d-none d-md-block"></div>
+                    
+                    <div class="col-md-11">
+                        <div class="card-body p-4 p-md-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge rounded-pill bg-primary px-3">@Model.Genero</span>
+                                <span class="text-muted"><i class="bi bi-calendar3 me-1"></i> @Model.Ano</span>
+                            </div>
+
+                            <h1 class="display-5 fw-bold text-dark mb-4">@Model.Titulo</h1>
+
+                            <div class="row mb-4">
+                                <div class="col-sm-6">
+                                    <div class="p-3 border rounded-3 bg-light">
+                                        <small class="text-uppercase fw-bold text-muted d-block mb-1">Plataforma</small>
+                                        <span class="h5"><i class="bi bi-pc-display me-2"></i>@Model.Consola</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 class="fw-bold border-bottom pb-2 mb-3">Descripción General</h5>
+                            <p class="card-text text-secondary lh-lg" style="font-size: 1.1rem;">
+                                @Model.Descripcion
+                            </p>
+
+                            <div class="mt-5 p-4 bg-dark text-white rounded-3">
+                                <div class="row text-center">
+                                    <div class="col-4 border-end border-secondary">
+                                        <small class="d-block text-secondary">ID Registro</small>
+                                        <span class="fw-mono">#00@Model.Id</span>
+                                    </div>
+                                    <div class="col-4 border-end border-secondary">
+                                        <small class="d-block text-secondary">Estado</small>
+                                        <span class="text-success"><i class="bi bi-check-circle-fill"></i> Activo</span>
+                                    </div>
+                                    <div class="col-4">
+                                        <small class="d-block text-secondary">Región</small>
+                                        <span>Global</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@model List<Catalogo.Models.Item>
+
+@{
+    ViewData["Title"] = "Catálogo de Juegos";
+}
+
+<div class="container">
+    <div class="text-center my-5">
+        <h1 class="display-4 fw-bold">Mi <span class="text-primary">Catálogo</span></h1>
+        <p class="text-muted">Explora y gestiona tu colección personal de videojuegos.</p>
+        
+        <div class="mt-4">
+            <span class="me-2 fw-bold text-secondary">Filtrar por:</span>
+            <a asp-action="Index" class="btn btn-sm @(ViewBag.GeneroActual == null ? "btn-primary" : "btn-outline-primary") rounded-pill">Todos</a>
+            
+            @foreach (var gen in ViewBag.Generos as List<string>)
+            {
+                <a asp-action="Index" asp-route-genero="@gen"
+                       class="btn btn-sm @(ViewBag.GeneroActual == gen ? "btn-primary" : "btn-outline-primary") rounded-pill ms-1">
+                    @gen
+                </a>
+            }
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end mb-4">
+        <a asp-action="Agregar" class="btn btn-success shadow-sm">
+            <i class="bi bi-plus-circle me-2"></i>Nuevo Videojuego
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge-tech">@item.Genero</span>
+                            <small class="text-muted fw-bold">@item.Ano</small>
+                        </div>
+                        
+                        <h5 class="card-title fw-bold text-dark mb-3">@item.Titulo</h5>
+                        
+                        <p class="card-text text-secondary small">
+                            <i class="bi bi-cpu me-1"></i> @item.Consola
+                        </p>
+                        
+                        <p class="card-text">
+                            @if (!string.IsNullOrEmpty(item.Descripcion))
+                            {
+                                @(item.Descripcion.Length > 85 ? item.Descripcion.Substring(0, 85) + "..." : item.Descripcion)
+                            }
+                        </p>
+                    </div>
+
+                    <div class="card-footer bg-transparent border-0 pb-4 d-grid">
+                        <a asp-action="Detalle" asp-route-id="@item.Id" class="btn btn-primary">
+                            Ver Ficha Técnica
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
