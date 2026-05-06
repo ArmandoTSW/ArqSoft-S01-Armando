@@ -13,7 +13,7 @@ namespace Catalogo.Models
         [Required(ErrorMessage = "Debes especificar un género")]
         [Display(Name = "Género")]
         public string Genero { get; set; }
-
+        //holaSS
         [Range(1950, 2030, ErrorMessage = "El año debe estar entre 1950 y 2030")]
         [Display(Name = "Año de Lanzamiento")]
         public int Ano { get; set; }
